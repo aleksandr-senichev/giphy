@@ -1,0 +1,15 @@
+.search-bar {
+  margin-bottom: 10px;
+}
+
+.gifs {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.gifs__item {
+  flex-grow: 1;
+  height: 80px;
+  max-width: 150px;
+}

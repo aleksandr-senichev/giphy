@@ -1,0 +1,25 @@
+{
+  "type": "panel",
+  "name": "Giphy Panel",
+  "id": "myorgid-simple-panel",
+
+  "info": {
+    "description": "Giphy Panel For Gifs",
+    "author": {
+      "name": "Aleksandr Senichev"
+    },
+    "keywords": ["React", "Giphy", "Gifs"],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "6.3.x",
+    "plugins": []
+  }
+}
