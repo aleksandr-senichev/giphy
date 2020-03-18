@@ -12,7 +12,11 @@
 .gifs__item {
   flex-grow: 1;
   height: 80px;
-  max-width: 150px;
+}
+
+.gifs__item__img {
+  height: 100%;
+  width: 100%;
 }
 
 .search-bar-wrapper {

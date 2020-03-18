@@ -81,7 +81,11 @@ export class GiphyPanel extends PureComponent<PanelProps> {
     return gifs.length > 0 ? (
       <div className="gifs" style={{ maxHeight: `${height - 50}px` }}>
         {gifs.map(gif => {
-          return <img key={gif.id} src={gif.url} className="gifs__item" />;
+          return (
+            <a href={gif.url} className="gifs__item" target="_blank">
+              <img key={gif.id} src={gif.url} className="gifs__item__img" />
+            </a>
+          );
         })}
       </div>
     ) : (
