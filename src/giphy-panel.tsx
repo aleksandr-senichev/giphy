@@ -8,12 +8,14 @@ import './css/giphy-panel.css';
 interface State {
   gifs: Gif[];
   query: string;
+  loading: boolean;
 }
 
 export class GiphyPanel extends PureComponent<PanelProps> {
   state: State = {
     gifs: [],
     query: '',
+    loading: false,
   };
 
   constructor(props: PanelProps) {
@@ -26,17 +28,12 @@ export class GiphyPanel extends PureComponent<PanelProps> {
     return (
       <div
         style={{
-          position: 'relative',
           width,
           height,
         }}
+        className="panel-app-wrapper"
       >
-        <input
-          onChange={this.onInputChangeHandler}
-          value={this.state.query}
-          className="search-bar input-small gf-form-input width-100"
-          placeholder="Enter Your Gif"
-        />
+        {this.renderSearchBar()}
         {this.renderGifs()}
       </div>
     );
@@ -44,7 +41,7 @@ export class GiphyPanel extends PureComponent<PanelProps> {
 
   private onInputChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
-    this.setState({ query: value }, () => {
+    this.setState({ query: value, loading: true }, () => {
       this.fetchGifs(value);
     });
   };
@@ -54,10 +51,28 @@ export class GiphyPanel extends PureComponent<PanelProps> {
       const { data: gifs } = await Gifs.search({
         q: value,
       });
-      this.setState({ gifs });
+      this.setState({ gifs, loading: false });
     } catch (error) {
       //
     }
+  };
+
+  private renderSearchBar = () => {
+    return (
+      <div className="search-bar-wrapper">
+        <input
+          onChange={this.onInputChangeHandler}
+          value={this.state.query}
+          className="search-bar input-small gf-form-input width-100"
+          placeholder="Enter Your Gif"
+        />
+        {this.state.loading && (
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle className="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+        )}
+      </div>
+    );
   };
 
   private renderGifs = () => {
@@ -70,7 +85,7 @@ export class GiphyPanel extends PureComponent<PanelProps> {
         })}
       </div>
     ) : (
-      <h5>No Search Results.</h5>
+      <h6>No Search Results.</h6>
     );
   };
 }
