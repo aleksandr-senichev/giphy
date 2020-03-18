@@ -13,8 +13,4 @@ https://github.com/grafana/simple-react-panel
 2. yarn build or npm run build
 
 # Docker installation
-docker run -d \
-  -p 3000:3000 \
-  --name=grafana \
-  -e "GF_INSTALL_PLUGINS=https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1TfrqG0fatQ2xzY0Rq5XQjcsfmU99zPiL;giphy-panel" \
-  asenichev/giphy-panel:demo
+docker run -d -p 3000:3000 --name=grafana -e "GF_INSTALL_PLUGINS=https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1TfrqG0fatQ2xzY0Rq5XQjcsfmU99zPiL;giphy-panel" asenichev/giphy-panel:demo
