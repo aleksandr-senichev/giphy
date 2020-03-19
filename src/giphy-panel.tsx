@@ -53,7 +53,7 @@ export class GiphyPanel extends PureComponent<PanelProps> {
       });
       this.setState({ gifs, loading: false });
     } catch (error) {
-      //
+      this.setState({ loading: false });
     }
   };
 
